@@ -1,0 +1,39 @@
+Deployment strategies:- defines how a new version of an application is released to the users
+
+1)blue-green deployment(current to upgrade)
+2)canary release
+3)rolling 
+
+
+1)Blue-green deployment:- 
+	**Two separate environments:-Blue(current version) and Green (new version).only one receives production traffic at a time.
+	
+	process:-
+			1)Blue is running(v1)	
+			2)create green environment
+			3)deploy v2 to green
+			4)test green
+			5)switch traffic to green
+			6)green becomes production
+			7)keep blue for rollback
+Advantages:-    1)fast rollback
+		2)New version tested before the switch
+		3)Minimal production downtime
+		4)Easy to understand	
+
+		
+2)Canary Release:-Release the new version to a small percentage of users first,monitor it,then expand gradually.
+	1)DEPLOY V2 -> 2)SEND 5% TRAFFIC -> 3)MONITOR
+	
+
+ADVANTAGES:- 1)Few users exposed at first
+		2)problems detected early
+		3)Lower risk a full release
+		4)Easy to stop rollout
+
+3)ROLLING UPDATE:-Gradually replaces instance running the old version -one by one ot in small 
+            	groups
+ADVANTAGES:-----1)no second environment needed
+		2)usually the lowest infrastructure cost
+		3)gradual,controlled replacement
+		4)built,into Kubernetes deployments				
